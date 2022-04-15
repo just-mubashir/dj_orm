@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title%} Index Home {% endblock title %}
+
+{% block body%} 
+
+<h4>Delete Employee Information</h4>
+
+<!-- Example single danger button -->
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Select Employee to Delete
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    {% for employee in employee_all %}
+    <a class="dropdown-item" href="/delete_emp/{{employee.id}}">ID: {{employee.id}}, First Name : {{employee.first_name}} and Last Name : {{employee.last_name}} </a>
+    {% endfor %} 
+
+  </div>
+</div>
+<!-- Example single danger button -->
+
+<hr>
+<p>Cannot Recover User again</p>
+{% endblock body%}
+
+{% block customCSS%} {% endblock customCSS %}
+{% block customJS%} {% endblock customJS %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title%} Index Home {% endblock title %}
+
+{% block body%} 
+
+<h4>Employee Information</h4>
+
+<a href="/all_emp" class="btn btn-primary btn-lg enabled" tabindex="-1" role="button" aria-disabled="false">All Employee</a>
+<a href="/delete_emp" class="btn btn-primary btn-lg enabled" tabindex="-1" role="button" aria-disabled="false">Delete Employee</a>
+<a href="/add_emp" class="btn btn-primary btn-lg enabled" tabindex="-1" role="button" aria-disabled="false">Add Employee</a>
+<a href="/filter_emp" class="btn btn-primary btn-lg enabled" tabindex="-1" role="button" aria-disabled="false">Search Employee</a>
+
+{% endblock body%}
+
+{% block customCSS%} {% endblock customCSS %}
+{% block customJS%} {% endblock customJS %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title%} Index Home {% endblock title %}
+
+{% block body%} 
+
+<h4>All Employee Information</h4>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Employee IDS</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Email</th>
+        <th scope="col">age</th>
+        <th scope="col">Designation</th>
+        <th scope="col">Department</th>
+        <th scope="col">Address</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Date Joined</th>
+        <th scope="col">HRA & Vars</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Bonus</th>
+      </tr>
+    </thead>
+    {% for employee in employee_all %}
+    <tbody>
+        <tr>
+            <th scope="row">{{employee.id}}</th>
+            <td>{{employee.first_name}}</td>
+            <td>{{employee.last_name}}</td>
+            <td>{{employee.age}}</td>
+            <td>{{employee.phone}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.designation}}</td>
+            <td>{{employee.department}}</td>
+            <td>{{employee.address}}</td>
+            <td>{{employee.gender}}</td>
+            <td>{{employee.date_join}}</td>
+            <td>{{employee.HRA_variables}}</td>
+            <td>{{employee.salary}}</td>
+            <td>{{employee.bonous}}</td>
+            
+        </tr>
+        
+    </tbody>
+       {% endfor %}
+  </table>
+{% endblock body%}
+
+{% block customCSS%} {% endblock customCSS %}
+{% block customJS%} {% endblock customJS %}
