@@ -3,11 +3,50 @@
 
 {% block title%} All Employee Filtered Information{% endblock title %}
 
-{% block body%} 
+{% block body%}
 
 <h4>All Employee Filtered Information</h4>
-
-
+<form action="/filter_emp" method="post">
+    {% csrf_token %}
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" value="{{name}}" placeholder="Enter First or Last Name">
+    <p>
+        <label for="department">Department</label>
+        <input type="text" id="department" name="department" value="{{department}}" placeholder="Search by Department">
+    <p>
+        <label for="designation">Designation</label>
+        <input type="text" id="designation" name="designation" value="{{designation}}" placeholder="Search by Designation">
+    <p>
+        
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+                Filter Employees  by Salary less than 25000
+            </label>
+        </div>
+        
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+                Filter Employees by Salary more than 25000
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+                Filter Employees by age more than 45 years old
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+                Filter Employees by age less than 45 years old
+            </label>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
+    
 {% endblock body%}
 
 {% block customCSS%} {% endblock customCSS %}

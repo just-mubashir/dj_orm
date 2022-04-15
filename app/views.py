@@ -2,6 +2,7 @@ from django.http import HttpResponseBadRequest
 from django.shortcuts import render, HttpResponse
 from . models import Department, Role, Employee
 from datetime import datetime
+from django.db.models import Q
 # from . forms import add_emp_form
 # Create your views here.
 def index(request):
@@ -64,7 +65,26 @@ def add_emp(request):
         return HttpResponseBadRequest
 
 def filter_emp(request):
-    return render (request, 'filter_emp.html')
+    if request.method == 'POST':
+        name = request.POST['name']
+        department = request.POST['department']
+        designation = request.POST['designation']
+        employee_all = Employee.objects.all()
+        if name:
+            employee_all.filter(Q(first_name__icontains = name) | Q(last_name__icontains = name))
+        else:
+            return HttpResponse("NO EMPLOYEE FOUND")
+        if department:
+            employee_all.filter(department__name__icontains = department)
+        if designation:
+            employee_all.filter(designation__name__icontains = designation)
+        
+        params = {'employee_all' : employee_all}
+        return render(request, 'all_emp.html', params )
+    elif request.method == 'GET':
+        return render (request, 'filter_emp.html')
+    else:
+        return HttpResponse("UNEXPECTED ERROR OCCURED !! TRY AGAIN !!")
 
 
 
